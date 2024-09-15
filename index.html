@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Finanzas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Administrar Finanzas</h1>
+    <div class="form-container">
+        <form id="financeForm">
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" placeholder="Descripción del gasto/ingreso" required>
+
+            <label for="amount">Monto:</label>
+            <input type="number" id="amount" placeholder="Monto" required>
+
+            <label for="type">Tipo:</label>
+            <select id="type" required>
+                <option value="Ingreso">Ingreso</option>
+                <option value="Gasto">Gasto</option>
+            </select>
+
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+
+    <h2>Lista de Finanzas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Monto</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="financeList"></tbody>
+    </table>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
