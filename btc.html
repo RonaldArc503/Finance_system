@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BTC</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .price, .recommendation {
+            font-size: 1.5em;
+            color: #ff9900;
+            margin: 10px;
+        }
+        .loading {
+            font-size: 1.2em;
+            color: #888;
+        }
+    </style>
+    </head>
+    <body>
+
+        <h1>Precio de Bitcoin (BTC) </h1>
+
+        <div id="prices">
+            <div id="gecko-price" class="price loading">CoinGecko: Cargando...</div>
+            <div id="coindesk-price" class="price loading">CoinDesk: Cargando...</div>
+            <div id="binance-price" class="price loading">Binance: Cargando...</div>
+        </div>
+
+        <div id="recommendation" class="recommendation loading">Recomendación: Cargando...</div>
+
+        <script>
+        // Función para obtener el precio desde CoinGecko
+        async function fetchGeckoPrice() {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+            const data = await response.json();
+            return data.bitcoin.usd;
+        }
+
+        // Función para obtener el precio desde CoinDesk
+        async function fetchCoinDeskPrice() {
+            const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+            const data = await response.json();
+            return data.bpi.USD.rate_float;
+        }
+
+        // Función para obtener el precio desde Binance (spot market)
+        async function fetchBinancePrice() {
+            const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
+            const data = await response.json();
+            return parseFloat(data.price);
+        }
+
+        // Función para obtener el "Fear & Greed Index" desde Alternative.me
+        async function fetchFearGreedIndex() {
+            const response = await fetch('https://api.alternative.me/fng/');
+            const data = await response.json();
+            const index = data.data[0].value;
+            const sentiment = data.data[0].value_classification;
+            return { index: parseInt(index), sentiment: sentiment };
+        }
+
+        // Simulación básica de RSI
+        async function fetchRSI() {
+            // Aquí deberías conectar con una API real de RSI
+            return Math.random() * 100;  // Simulación entre 0 y 100
+        }
+
+        // Función para obtener recomendación basada en varios indicadores
+        async function getBuyRecommendation() {
+            const fearGreed = await fetchFearGreedIndex();  // Llamada al Fear & Greed Index
+            const rsi = await fetchRSI();  // Cálculo del RSI simulado
+
+            let recommendationText = ` ${fearGreed.index} (${fearGreed.sentiment})\nRSI: ${rsi.toFixed(2)}`;
+
+            if (fearGreed.index < 25 && rsi < 30) {
+                return recommendationText + " - Miedo extremo y sobreventa. Potencial buen momento para comprar.";
+            } else if (fearGreed.index > 75 || rsi > 70) {
+                return recommendationText + " - Avaricia extrema o sobrecompra. Podría ser mejor esperar para comprar.";
+            } else {
+                return recommendationText + " - Condiciones neutras. Evaluar antes de tomar decisiones.";
+            }
+        }
+
+        // Actualiza todos los precios y la recomendación
+        async function updateData() {
+            const geckoElement = document.getElementById('gecko-price');
+            const coindeskElement = document.getElementById('coindesk-price');
+            const binanceElement = document.getElementById('binance-price');
+            const recommendationElement = document.getElementById('recommendation');
+
+            try {
+                const geckoPrice = await fetchGeckoPrice();
+                geckoElement.textContent = `CoinGecko: $${geckoPrice.toLocaleString()} USD`;
+            } catch (error) {
+                geckoElement.textContent = "Error al obtener el precio de CoinGecko";
+            }
+
+            try {
+                const coindeskPrice = await fetchCoinDeskPrice();
+                coindeskElement.textContent = `CoinDesk: $${coindeskPrice.toLocaleString()} USD`;
+            } catch (error) {
+                coindeskElement.textContent = "Error al obtener el precio de CoinDesk";
+            }
+
+            try {
+                const binancePrice = await fetchBinancePrice();
+                binanceElement.textContent = `Binance: $${binancePrice.toLocaleString()} USD`;
+            } catch (error) {
+                binanceElement.textContent = "Error al obtener el precio de Binance";
+            }
+
+            try {
+                const recommendation = await getBuyRecommendation();
+                recommendationElement.textContent = `Recomendación: ${recommendation}`;
+            } catch (error) {
+                recommendationElement.textContent = "Error al obtener la recomendación";
+            }
+        }
+
+        // Actualiza los precios y la recomendación cada 10 segundos
+        setInterval(updateData, 10000);
+
+        // Llama la función inmediatamente al cargar la página
+        updateData();
+    </script>
+
+    </body>
+</html>
