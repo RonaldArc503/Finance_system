@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Responsive con Logo</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+
+        .logo h1 {
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5em;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ddd;
+        }
+
+        /* Ocultar el menú checkbox por defecto */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Icono del menú para dispositivos móviles */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            color: white;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: #333;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 1em 0;
+                text-align: center;
+                z-index: 5;
+            }
+
+            /* Mostrar menú al activar checkbox */
+            #menu-toggle:checked + .menu-icon + .nav-links {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            /* Cambiar de icono de hamburguesa a 'X' */
+            #menu-toggle:checked + .menu-icon .fa-bars {
+                display: none;
+            }
+
+            #menu-toggle:checked + .menu-icon .fa-times {
+                display: block;
+            }
+
+            .fa-times {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>TASKLY UP</h1>
+            </div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </label>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#services">Mis contraseñas</a></li>
+                <li><a href="#about">BTC</a></li>
+                <li><a href="#contact">Agenda</a></li>
+                <li><a href="#services">Pagar</a></li>
+                <li><a href="#about">Mi perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
