@@ -1,3 +1,7 @@
+*{
+    text-decoration: none !important;
+}
+
 ul {
     list-style: none;
 }
@@ -15,7 +19,7 @@ a {
 }
 
 .container {
-    max-width: 80rem;
+    max-width: 60rem;
     padding: 0 2rem;
     margin: 0 auto;
     display: flex;
@@ -77,10 +81,12 @@ a {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
 }
 
 .nav-link {
     position: relative;
+    margin-top: 5px;
 }
 
 .nav-link > a {
@@ -101,6 +107,7 @@ a {
 
 .nav-link:hover > a {
     transform: scale(1.1);
+    color: #ffffff;
 }
 
 .dropdown {
@@ -264,7 +271,7 @@ a {
     }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1320px) {
     .ventana-menu-container {
         display: flex;
     }

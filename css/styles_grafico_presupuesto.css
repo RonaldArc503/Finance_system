@@ -10,6 +10,7 @@ h1 {
 }
 
 .container-groups {
+    font-family: 'Poppins', sans-serif;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem; /* Espaciado entre columnas */
@@ -37,7 +38,6 @@ h1 {
     flex: 1; /* Que el gráfico ocupe un espacio balanceado */
     font-family: 'Poppins', sans-serif;
 }
-
 
 /* Estilos para los datos del presupuesto */
 .presupuesto-datos {
@@ -91,6 +91,11 @@ button:hover {
     margin-top: 10px;
 }
 
+#transacciones {
+    margin: 20px;
+    border-radius: 10px;
+}
+
 /* Lista de transacciones */
 #lista-transacciones {
     margin-top: 15px;
@@ -98,25 +103,21 @@ button:hover {
     list-style-type: none;
 }
 
-#lista-transacciones div {
+.transaccion-item {
+    width: 1000px;
     background-color: #f9f9f9;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 13px rgba(0, 0, 0, 0.1);
-}
-
-#lista-transacciones div strong {
-    font-size: 1.1rem;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    
 }
 
 /* Responsive Design */
-
-
 @media (max-width: 530px) {
     /* Asegura que el flexbox del presupuesto se adapte en móviles */
     .presupuesto-flexbox {
@@ -146,4 +147,41 @@ button:hover {
     input[type="number"], input[type="text"], select {
         width: 100%; /* Asegurarse de que los inputs ocupen todo el ancho */
     }
+}
+
+.list-group-item {
+    transition: transform 0.3s ease;
+}
+
+.swipe-left {
+    transform: translateX(-100%);
+}
+
+.swipe-right {
+    transform: translateX(100%);
+}
+
+/* Colores personalizados según el tipo de gasto */
+.icono-gasto.fa-utensils { color: #ff6347; }  /* Comida - Tomate */
+.icono-gasto.fa-home { color: #4682b4; }      /* Casa - Azul acero */
+.icono-gasto.fa-piggy-bank { color: #f4a460; } /* Ahorro - Arena */
+.icono-gasto.fa-graduation-cap { color: #daa520; } /* Universidad - Dorado */
+.icono-gasto.fa-bus { color: #32cd32; }       /* Transporte - Verde lima */
+.icono-gasto.fa-bell { color: #ff4500; }      /* Subscripciones - Naranja rojizo */
+.icono-gasto.fa-tags { color: #8a2be2; }      /* Gastos varios - Violeta */
+.icono-gasto.fa-heartbeat { color: #dc143c; } /* Salud - Carmesí */
+.icono-gasto.fa-tint { color: #1e90ff; }      /* Agua - Azul */
+.icono-gasto.fa-bolt { color: #ffeb3b; }      /* Electricidad - Amarillo */
+.icono-gasto.fa-money-bill { color: #228b22; } /* Default - Verde bosque */
+
+.transaccion-texto small {
+    display: block; /* Asegúrate de que la fecha ocupe toda la línea */
+    color: #5a5959; /* Un color más suave para la fecha */
+    margin-top: 4px; /* Espacio entre la descripción y la fecha */
+}
+
+
+.icono-gasto {
+    font-size: 3rem; /* Tamaño del icono */
+    margin-right: 10px; /* Espacio entre el icono y el texto */
 }

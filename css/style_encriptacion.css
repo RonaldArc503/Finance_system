@@ -1,0 +1,96 @@
+
+
+.containerEnciptar {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 20px auto; /* Centramos el contenedor */
+    padding: 20px; /* Espaciado interno */
+    background-color: white; /* Fondo blanco para el contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+h1, h2 {
+    color: #333; /* Color del texto de los encabezados */
+}
+
+h1 {
+    font-size: 28px; /* Tamaño del encabezado principal */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+h2 {
+    font-size: 22px; /* Tamaño de los subtítulos */
+    margin-top: 30px; /* Espaciado superior */
+    margin-bottom: 15px; /* Espaciado inferior */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espaciado entre los grupos de formularios */
+}
+
+label {
+    font-weight: bold; /* Negrita para las etiquetas */
+    display: block; /* Mostrar como bloque para que ocupe toda la línea */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+input[type="password"], button {
+    width: 100%; /* Ancho completo para inputs y botones */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 5px; /* Espaciado superior */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+}
+
+button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición para el color de fondo */
+    margin-top: 10px; /* Margen superior para separación */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+#passwordMessage {
+    margin-top: 10px; /* Espaciado superior */
+    color: red; /* Color rojo para los mensajes de error */
+}
+
+#password-list {
+    list-style-type: none; /* Sin puntos de lista */
+    padding: 0; /* Sin relleno */
+}
+
+#password-list li {
+    background-color: #e9ecef; /* Color de fondo para cada elemento de la lista */
+    margin: 5px 0; /* Margen vertical entre elementos */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+    .containerEnciptar {
+        padding: 15px; /* Reducir el espaciado en pantallas pequeñas */
+    }
+
+    h1 {
+        font-size: 24px; /* Tamaño del encabezado principal */
+    }
+
+    h2 {
+        font-size: 20px; /* Tamaño de los subtítulos */
+    }
+
+    button {
+        font-size: 14px; /* Reducir tamaño de texto en botones */
+    }
+}
+
+.btn-danger {
+    margin-left: 10px; /* Espacio entre el texto de la contraseña y el botón de eliminar */
+}

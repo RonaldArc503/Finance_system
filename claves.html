@@ -3,64 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles_grafico_presupuesto.css">
+  
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/style-nav.css">
+    <link rel="stylesheet" href="/css/style_encriptacion.css">
     <link rel="icon" href="/path-to-your-favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="/js/claves.js"></script>
     <title>Gestor Claves</title>
 </head>
 <body>
-     <!-- nav -->
-
-     <header class="header1">
-      <div class="container">
-        <input type="checkbox" name="" id="check" />
-  
-        <div class="logo-container">
-          <a href="/"><h3 class="logo">TASKLY UP</h3></a>
-        </div>
-  
-        <div class="nav-btn">
-          <div class="nav-links">
-            <ul>
-              <li class="nav-link" style="--i: 0.5s">
-                <a href="/">Inicio</a>
-              </li>
-              <li class="nav-link" style="--i: 0.60s">
-                <a href="/task.html">Agenda<i class="fas fa-caret-down"></i></a>
-              </li>
-              <li class="nav-link" style="--i: 0.80s">
-                <a href="/claves.html">Mis Contraseñas<i class="fas fa-caret-down"></i></a>
-              </li>
-              <li class="nav-link" style="--i: 1s">
-                <a href="/btc.html">Criptomonedas</a>
-              </li>
-              <li class="nav-link" style="--i: 1.1s">
-                <a href="/btc.html">Tareas Rapidas</a>
-              </li>
-            
-              <li class="nav-link" style="--i: 1.20s">
-                <a href="/mi_perfil.html">Mi perfil</a>
-              </li>
-             
-            </ul>
+<!-- nav --> <header class="header1">
+        <div class="container">
+          <input type="checkbox" name="" id="check" />
+          <div class="logo-container">
+              <a href="/"><h3 class="logo">TASKLY UP</h3></a>
           </div>
-  
-          <div class="log-sign" style="--i: 1.8s">
-            
+          <div class="nav-btn">
+              <div class="nav-links">
+                  <ul>
+                      <li class="nav-link" style="--i: 0.5s"><a href="/">Inicio</a></li>
+                      <li class="nav-link" style="--i: 0.60s"><a href="/task.html">Agenda</a></li>
+                      <li class="nav-link" style="--i: 0.80s"><a href="/claves.html">Mis Contraseñas</a></li>
+                      <li class="nav-link" style="--i: 1s"><a href="/btc.html">Criptomonedas</a></li>
+                      <li class="nav-link" style="--i: 1.1s"><a href="/btc.html">Tareas Rapidas</a></li>
+                      <li class="nav-link" style="--i: 1.20s"><a href="/mi_perfil.html">Mi perfil</a></li>
+                  </ul>
+              </div>
+              <div class="log-sign" style="--i: 1.8s"></div>
           </div>
-        </div>
-  
-        <div class="ventana-menu-container">
-          <div class="ventana-menu">
-            <div></div>
+          <div class="ventana-menu-container">
+              <div class="ventana-menu"><div></div></div>
           </div>
-        </div>
       </div>
-    </header>
+  </header>
 <!-- Fin nav -->
 
-<h1>Encrptar Claves </h1>
+<div class="containerEnciptar">
+    <h1>Encriptar Claves</h1>
+    
+    <!-- Input para la contraseña principal -->
+    <div class="form-group">
+        <label for="passwordInput">Ingresa tu contraseña principal para desencriptar:</label>
+        <input type="password" id="passwordInput" class="form-control" required>
+    </div>
+    <button id="decryptPasswords" class="desencriptardata">Desencriptar Contraseñas</button>
+    
+    <div id="passwordMessage" style="margin-top: 20px;"></div>
+
+    <!-- Sección para guardar contraseñas -->
+    <h2>Guardar Contraseñas Encriptadas</h2>
+    <div class="form-group">
+        <label for="newPassword">Nueva Contraseña:</label>
+        <input type="password" id="newPassword" class="form-control" required>
+    </div>
+    <button id="savePassword" class="guardardata">Guardar Contraseña</button>
+
+    <h2>Contraseñas Guardadas:</h2>
+    <ul id="password-list"></ul>
+</div>
+<script src="/js/claves.js"></script>
 </body>
 </html>
