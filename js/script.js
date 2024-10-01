@@ -18,10 +18,11 @@ const inicializarGraficoPresupuesto = () => {
             labels: ['Gastado', 'Disponible'],
             datasets: [{
                 data: [totalGastado, presupuestoMensual - totalGastado],
-                backgroundColor: ['#3b82f5', '#e0e0e0'],
-                borderColor: ['#1e40af', '#e0e0e0'], // Color del borde para cada segmento
+                backgroundColor: ['#4c9dd6', '#77fa6a'],
+                borderColor: ['#1e40af', '#77fa6a'], // Color del borde para cada segmento
                 borderWidth: 1, // Ancho del borde
-                hoverBackgroundColor: ['#3b82f5', '#e0e0e0'],
+              
+                borderRadius: 10,
             }]
         },
         options: {
@@ -33,7 +34,11 @@ const inicializarGraficoPresupuesto = () => {
                     display: false, // Ocultar leyenda
                 },
                 datalabels: {
-                    color: '#000000', // Color del texto
+                    color: '#ffffff', // Color del texto
+                    font: {
+                        weight: 'bold', // Establecer texto en negrita
+                        size: 14 // Tamaño de la fuente (ajusta según lo necesario)
+                    },
                     formatter: (value, context) => {
                         const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
                         const percentage = ((value / total) * 100).toFixed(2) + '%';
@@ -49,12 +54,10 @@ const inicializarGraficoPresupuesto = () => {
 // Función para ocultar/mostrar el input del presupuesto
 const toggleInputPresupuesto = () => {
     if (presupuestoInput.style.display === 'none') {
-        presupuestoInput.style.display = 'none'; // Ocultar el input
+        presupuestoInput.style.display = 'block'; // Mostrar el input
         togglePresupuestoBtn.textContent = 'Definir Presupuesto';
-
-       
     } else {
-            presupuestoInput.style.display = 'none'; // Ocultar el input
+        presupuestoInput.style.display = 'none'; // Ocultar el input
         togglePresupuestoBtn.textContent = 'Definir Presupuesto';
     }
 };
@@ -74,7 +77,7 @@ const formatFecha = (fecha) => {
 
 const agregarTransaccion = (descripcion, monto, tipo) => {
     const transacciones = JSON.parse(localStorage.getItem('transacciones')) || [];
-    const fecha = formatFecha(new Date()); // Formatear la fecha
+    const fecha = formatFecha(new Date());
     transacciones.push({ descripcion, monto, fecha, tipo });
     localStorage.setItem('transacciones', JSON.stringify(transacciones));
 
@@ -82,22 +85,107 @@ const agregarTransaccion = (descripcion, monto, tipo) => {
     actualizarPresupuesto();
 };
 
+// Función para cargar las transacciones desde localStorage
 const cargarTransacciones = () => {
     const transacciones = JSON.parse(localStorage.getItem('transacciones')) || [];
-    transaccionesDiv.innerHTML = transacciones.map((transaccion, index) => `
-        <div>
-            <strong>${transaccion.descripcion}</strong>: $${transaccion.monto} (Fecha: ${transaccion.fecha}, Tipo: ${transaccion.tipo})
-            <button onclick="eliminarTransaccion(${index})">Eliminar</button>
+    const listaTransacciones = document.getElementById('lista-transacciones');
+    listaTransacciones.innerHTML = ''; // Limpiar la lista antes de cargar
+
+    transacciones.forEach((transaccion, index) => {
+        const transaccionDiv = document.createElement('div');
+        transaccionDiv.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center swipeable';
+        
+        // Estructura de la transacción en formato de lista
+        transaccionDiv.innerHTML = `
+        <div class="transaccion-item">
+            <div class="icono-y-texto">
+                <i class="${getIconClass(transaccion.tipo)} icono-gasto"></i>
+                <div class="transaccion-texto">
+                    <strong>${transaccion.tipo}</strong>
+                    <p>${transaccion.descripcion}</p>
+                    <small>${transaccion.fecha}</small> <!-- Mover aquí la fecha -->
+                </div>
+            </div>
+            <div class="monto-gasto">
+                $${transaccion.monto}
+            </div>
         </div>
-    `).join('');
+    `;
+    
+    
+
+        // Agregar funcionalidad de deslizamiento (swipe)
+        const hammer = new Hammer(transaccionDiv);
+        hammer.on('swipeleft', function () {
+            eliminarTransaccion(index);
+        });
+
+        hammer.on('swiperight', function () {
+            editarTransaccion(index);
+        });
+
+        listaTransacciones.appendChild(transaccionDiv);
+    });
 };
+
+
+
+
+
+
+const editarTransaccion = (index) => {
+    const transacciones = JSON.parse(localStorage.getItem('transacciones')) || [];
+    const transaccion = transacciones[index];
+    
+    // Agregar la clase para deslizar fuera
+    const transaccionDiv = document.querySelectorAll('.list-group-item')[index];
+    transaccionDiv.classList.add('swipe-right');
+
+    // Esperar el tiempo de la animación antes de eliminar la transacción
+    setTimeout(() => {
+        // Rellenar los inputs con los detalles de la transacción actual
+        document.getElementById('descripcion-gasto').value = transaccion.descripcion;
+        document.getElementById('monto-gasto').value = transaccion.monto;
+        document.getElementById('tipo-gasto').value = transaccion.tipo;
+
+        // Eliminar la transacción de localStorage
+        eliminarTransaccion(index);
+    }, 300); // Tiempo debe coincidir con la duración de la transición CSS
+};
+
+// Function to get icon class based on expense type
+const getIconClass = (tipo) => {
+    switch (tipo) {
+        case 'comida': return 'fas fa-utensils'; 
+        case 'casa': return 'fas fa-home';
+        case 'ahorro': return 'fas fa-piggy-bank';
+        case 'universidad': return 'fas fa-graduation-cap';
+        case 'transporte': return 'fas fa-bus';
+        case 'subscripciones': return 'fas fa-bell';
+        case 'gastos varios': return 'fas fa-tags';
+        case 'salud': return 'fas fa-heartbeat';
+        case 'agua': return 'fas fa-tint';
+        case 'electricidad': return 'fas fa-bolt';
+        default: return 'fas fa-money-bill';
+    }
+};
+
+
 
 const eliminarTransaccion = (index) => {
     const transacciones = JSON.parse(localStorage.getItem('transacciones')) || [];
-    transacciones.splice(index, 1);
-    localStorage.setItem('transacciones', JSON.stringify(transacciones));
-    cargarTransacciones();
-    actualizarPresupuesto();
+    
+    // Agregar la clase para deslizar fuera
+    const transaccionDiv = document.querySelectorAll('.list-group-item')[index];
+    transaccionDiv.classList.add('swipe-left');
+
+    // Esperar el tiempo de la animación antes de eliminar la transacción
+    setTimeout(() => {
+        transacciones.splice(index, 1);
+        localStorage.setItem('transacciones', JSON.stringify(transacciones));
+        cargarTransacciones();
+        actualizarPresupuesto();
+    }, 300); // Tiempo debe coincidir con la duración de la transición CSS
 };
 
 const actualizarPresupuesto = () => {

@@ -1,0 +1,85 @@
+/* Estilo del cuerpo y precios de criptomonedas */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1b1b; /* Color de fondo oscuro */
+    margin: 0;
+    color: #ffffff; /* Texto blanco */
+}
+
+h1 {
+    color: #f0c14b; /* Color dorado */
+    margin: 20px 0;
+}
+
+#crypto-prices {
+    width: 80%; /* Ancho del contenedor */
+    max-width: 1200px; /* Ancho máximo */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #2a2a2a; /* Color de fondo oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra */
+}
+
+h2 {
+    color: #f0c14b; /* Color dorado para el subtítulo */
+    margin-bottom: 20px;
+    text-align: center; /* Centrar el subtítulo */
+}
+
+.crypto-list {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    gap: 20px; /* Espacio entre divs */
+    justify-content: center; /* Centrar los divs */
+}
+
+.crypto-item {
+    background-color: #3a3a3a; /* Color de fondo para cada criptomoneda */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px;
+    flex: 1 1 200px; /* Permitir que los elementos crezcan y se ajusten */
+    max-width: 95%; /* Máximo ancho para que no se estire demasiado */
+    margin-top: 10px;
+    text-align: center; /* Centrar texto */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra en cada div */
+    transition: transform 0.3s; /* Transición suave para efecto hover */
+}
+
+.crypto-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+}
+
+.crypto-item span {
+    display: block; /* Hacer que el nombre y el precio estén en líneas separadas */
+    font-size: 1.2em; /* Tamaño de fuente más grande para el precio */
+    color: #f0c14b; /* Color dorado para el precio */
+}
+
+.crypto-item h3 {
+    margin: 0; /* Eliminar márgenes */
+    font-size: 1.5em; /* Tamaño de fuente para el nombre de la criptomoneda */
+    color: #ffffff; /* Texto blanco para el nombre de la criptomoneda */
+}
+
+#chart-container {
+    width: 100%; /* Cambiar a 100% para ser más responsivo */
+    margin-top: 20px; /* Espacio superior */
+    height: 400px; /* Ajusta la altura según sea necesario */
+}
+
+/* Estilos adicionales para dispositivos móviles */
+@media (max-width: 600px) {
+    #chart-container {
+        height: 300px; /* Menos altura en móviles */
+    }
+
+    .crypto-item {
+        flex: 1 1 100%; /* Cada criptomoneda ocupa el 100% del ancho en móviles */
+        max-width: none; /* Sin límite de ancho en móviles */
+    }
+}
