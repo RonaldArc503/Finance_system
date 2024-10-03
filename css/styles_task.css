@@ -1,0 +1,115 @@
+/* Estilos generales */
+.bod{
+    background-color: #DEB887; /* Color de fondo oscuro */
+  
+}
+
+/* Contenedor principal responsivo */
+.tareas-conteiner1 {
+   margin: 20px;
+    font-family: 'Poppins', sans-serif;
+  
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  
+    padding: 20px;
+  
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input estilizado y centrado */
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 500px; /* Limitar ancho máximo */
+    box-sizing: border-box;
+}
+
+/* Botón estilizado */
+.btn-add-task {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1b5961;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Lista de tareas */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Cada tarea en formato "sticky note" */
+.lista {
+    display: flex;            /* Activa Flexbox */
+    justify-content: center;   /* Centra horizontalmente */
+    align-items: center;       /* Centra verticalmente */
+    text-align: center; 
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    font-size:1.2em;
+}
+.lista:hover{
+    transform: translateY(-4px);
+}
+/* Botón para eliminar tareas */
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* Mensaje vacío */
+.empty {
+    display: none;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    .tareas-conteiner1 {
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    input {
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    .task-list {
+        gap: 5px; /* Reducir espacio entre las tareas */
+    }
+
+    .lista {
+        width:300px; /* Las notas ocupan todo el ancho en pantallas pequeñas */
+    }
+}
