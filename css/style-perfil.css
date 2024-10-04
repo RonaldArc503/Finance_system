@@ -1,0 +1,83 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f5; /* Color de fondo suave */
+    margin: 0;
+    padding: 0;
+}
+
+.perfil-main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.perfil-container {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Color de fondo del perfil */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.perfil-foto {
+    width: 100px; /* Ancho de la foto */
+    height: 100px; /* Alto de la foto */
+    border-radius: 50%; /* Hacer la foto redonda */
+    background-image: url('https://imgs.search.brave.com/gek1pAIiBmMFka3zYjAjkXK9-rsrweM0jNsAxMi9zgE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHNkLXByZW1pdW0v/ZDEtcGVyZmlsLWNh/bmRpZGF0by1leHBy/ZXNpb24tZGlnbmEt/aWNvbm8tbmVvLXBs/YXMtZGlzZW5vcy1h/YnN0cmFjdG9zLWlj/b25pY29zLWFpc2xh/ZG9zXzEwMjA0OTUt/Nzc3ODY3LmpwZz9z/aXplPTYyNiZleHQ9/anBn'); /* Imagen de perfil por defecto */
+    background-size: cover; /* Ajustar la imagen */
+    background-position: center; /* Centrar la imagen */
+    margin-right: 20px; /* Espacio entre la foto y la info */
+    border: 2px solid #007bff; /* Bordes azul */
+}
+
+.perfil-info {
+    flex-grow: 1; /* Hace que este contenedor ocupe el espacio restante */
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+.perfil-info h2 {
+    margin: 0; /* Eliminar márgenes para que se vea más limpio */
+    font-size: 24px; /* Tamaño de fuente */
+    color: #343a40; /* Color del texto */
+}
+
+.perfil-info p {
+    margin: 5px 0; /* Márgenes para el párrafo */
+    color: #6c757d; /* Color del texto más suave */
+}
+
+.perfil-contraseña {
+    display: flex;
+    align-items: center; /* Alinear verticalmente */
+}
+
+.contraseña {
+    margin-left: 5px; /* Espacio entre el texto y el asterisco */
+    font-weight: bold; /* Hacer el texto de la contraseña más fuerte */
+    color: #dc3545; /* Color de advertencia para la contraseña */
+}
+
+.ahorros-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff; /* Color azul para el título */
+}
+form {
+    margin-top: 20px;
+}
+
+form input {
+    margin: 5px 0;
+    padding: 10px;
+    width: calc(100% - 22px);
+}
+
+form button {
+    padding: 10px;
+    background-color: #007bff; /* Cambiar al color que prefieras */
+    color: white;
+    border: none;
+    cursor: pointer;
+}

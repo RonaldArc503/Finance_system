@@ -1,0 +1,186 @@
+/* Calendario */
+body {
+    background-color: #e3f2fd; /* Color de fondo del body */
+}
+
+.calendar-container {
+    background-color: #bbdefb; /* Color de fondo más vibrante */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 20px 0;
+    margin-top: 20px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.calendar div {
+    padding: 15px; /* Mayor área de clic */
+    border-radius: 5px;
+    text-align: center;
+    background-color: #ffffff; /* Color de fondo del día */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Agregado efecto de transformación */
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.calendar div:hover {
+    background-color: #64b5f6; /* Color de fondo al pasar el mouse */
+    color: white;
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Estilos para días específicos */
+.calendar .day {
+    background-color: #e1f5fe; /* Color de fondo para los días normales */
+}
+
+.calendar .day:hover {
+    background-color: #42a5f5; /* Color de fondo para el día específico */
+    color: white;
+}
+
+/* Estilos para fechas pasadas */
+.calendar div[style*="color: #ccc"] {
+    cursor: default;
+}
+
+/* Selectores */
+.selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.selectors label {
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #1e88e5; /* Color del texto del selector */
+}
+
+.selectors select {
+    padding: 10px;
+    border: 1px solid #64b5f6; /* Color de borde más vibrante */
+    border-radius: 5px;
+    background-color: #ffffff; /* Color de fondo blanco */
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s; /* Transición suave al cambiar el enfoque */
+}
+
+.selectors select:focus {
+    border-color: #1e88e5; /* Color del borde cuando está enfocado */
+    outline: none;
+}
+
+/* Sección de notas */
+.note-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.note-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #1976d2; /* Color del título */
+}
+
+textarea {
+    width: 98%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    resize: vertical;
+    transition: border-color 0.3s; /* Transición suave al cambiar el enfoque */
+}
+
+textarea:focus {
+    border-color: #64b5f6; /* Color del borde al estar enfocado */
+    outline: none;
+}
+
+/* Botones */
+button {
+    background-color: #64b5f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, transform 0.2s ease; /* Efecto de transformación */
+}
+
+button:hover {
+    background-color: #42a5f5;
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#clear-note {
+    background-color: #ff7043; /* Color vibrante para el botón de borrar */
+    margin-left: 10px;
+}
+
+#clear-note:hover {
+    background-color: #ff5722; /* Color al pasar el mouse */
+}
+
+/* Notas guardadas */
+#saved-notes div {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    transition: background-color 0.2s ease; /* Efecto de transición */
+}
+
+#saved-notes div:hover {
+    background-color: #e0e0e0; /* Color al pasar el mouse */
+}
+
+/* style_agenda.css or a separate CSS file */
+.note-dot {
+    display: inline-block;
+    width: 8px; /* Adjust size as needed */
+    height: 8px;
+    border-radius: 50%; /* Make it a circle */
+    background-color: rgb(59, 236, 198); /* Change to your preferred color */
+    margin-left: 5px; /* Space between the day number and the dot */
+    vertical-align: middle; /* Align with the text */
+}
+
+
+/* style_agenda.css or a separate CSS file */
+.day {
+    position: relative; /* Needed for absolute positioning of the note */
+}
+
+.note {
+    position: absolute;
+    bottom: 5px; /* Adjust position as needed */
+    left: 5px; /* Adjust position as needed */
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px; /* Adjust font size as needed */
+    color: white; /* Change text color if necessary */
+    width: 100%; /* Make it fit within the day cell */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Add shadow for better visibility */
+}
+

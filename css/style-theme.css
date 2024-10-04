@@ -59,3 +59,179 @@
 
 
 /* Otros elementos que necesiten cambio de estilo en modo oscuro */
+/* Tema oscuro */
+.dark-theme {
+    background-color: #2e2e2e;
+    color: #f5f5f5;
+}
+
+.dark-theme h1 {
+    color: #80ff80;
+}
+
+.dark-theme h2 {
+    color: #dcdcdc;
+}
+
+.dark-theme .calendar-container {
+    background-color: #3c3c3c; /* Fondo del contenedor del calendario en tema oscuro */
+}
+
+.dark-theme .calendar div {
+    background-color: #4e4e4e; /* Color de fondo del día en tema oscuro */
+    color: #f5f5f5; /* Color del texto en días en tema oscuro */
+}
+
+.dark-theme .calendar div:hover {
+    background-color: #00796b; /* Color de fondo al pasar el mouse en tema oscuro */
+}
+
+.dark-theme .calendar .day {
+    background-color: #616161; /* Color de fondo para los días normales en tema oscuro */
+}
+
+.dark-theme .calendar .day:hover {
+    background-color: #009688; /* Color de fondo para el día específico en tema oscuro */
+}
+
+.dark-theme .selectors label {
+    color: #80ff80; /* Color de texto del selector en tema oscuro */
+}
+
+.dark-theme .selectors select {
+    background-color: #4e4e4e; /* Fondo del selector en tema oscuro */
+    color: #f5f5f5; /* Color del texto del selector en tema oscuro */
+    border-color: #707070; /* Borde del selector en tema oscuro */
+}
+
+.dark-theme .note-section {
+    background-color: #3c3c3c; /* Fondo de la sección de notas en tema oscuro */
+}
+
+.dark-theme .note-section h2 {
+    color: #80ff80; /* Color del título de la sección de notas en tema oscuro */
+}
+
+.dark-theme textarea {
+    background-color: #4e4e4e; /* Fondo del textarea en tema oscuro */
+    color: #f5f5f5; /* Color del texto en textarea en tema oscuro */
+    border-color: #707070; /* Borde del textarea en tema oscuro */
+}
+
+.dark-theme textarea:focus {
+    border-color: #80ff80; /* Color del borde al estar enfocado en tema oscuro */
+}
+
+.dark-theme button {
+    background-color: #00796b; /* Fondo del botón en tema oscuro */
+    color: #ffffff; /* Color del texto del botón en tema oscuro */
+}
+
+.dark-theme button:hover {
+    background-color: #004d40; /* Color al pasar el mouse en tema oscuro */
+}
+
+.dark-theme #clear-note {
+    background-color: #d32f2f; /* Fondo del botón de borrar en tema oscuro */
+}
+
+.dark-theme #clear-note:hover {
+    background-color: #b71c1c; /* Color al pasar el mouse en el botón de borrar en tema oscuro */
+}
+
+.dark-theme #saved-notes div {
+    background-color: #4e4e4e; /* Fondo de notas guardadas en tema oscuro */
+    color: #f5f5f5; /* Color del texto de notas guardadas en tema oscuro */
+    border-color: #707070; /* Borde de notas guardadas en tema oscuro */
+}
+
+.dark-theme #saved-notes div:hover {
+    box-shadow: 0 20px 33px rgba(255, 255, 255, 0.1); /* Sombra al pasar el mouse en notas guardadas en tema oscuro */
+}
+
+
+/* Tema oscuro */
+.dark-theme {
+    background-color: #2c2c2c; /* Color de fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+}
+
+/* Contenedor principal responsivo */
+.dark-theme .tareas-conteiner1 {
+    background-color: #3a3a3a; /* Color de fondo oscuro para el contenedor */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra más fuerte */
+}
+
+/* Input estilizado y centrado */
+.dark-theme input {
+    background-color: #4e4e4e; /* Color de fondo oscuro para el input */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #555; /* Color de borde más oscuro */
+}
+
+/* Botón estilizado */
+.dark-theme .btn-add-task {
+    background-color: #1b5961; /* Color de fondo original */
+    color: white;
+}
+
+/* Cada tarea en formato "sticky note" */
+.dark-theme .lista {
+    background-color: #4b4b4b; /* Color de fondo para las notas */
+    border: 1px solid #666; /* Color de borde más oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+/* Botón para eliminar tareas */
+.dark-theme .btn-delete {
+    background-color: #dc3545; /* Color de fondo para el botón de eliminar */
+    color: white;
+}
+
+/* Mensaje vacío */
+.dark-theme .empty {
+    color: #bbb; /* Color más claro para el mensaje vacío */
+}
+
+/* Tema perfil */
+
+/* Tema oscuro */
+.dark-theme {
+    background-color: #121212; /* Color de fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+/* Estilo del contenedor principal */
+.dark-theme .perfil-main {
+    background-color: #1e1e1e; /* Fondo del perfil en modo oscuro */
+}
+
+/* Estilo del contenedor del perfil */
+.dark-theme .perfil-container {
+    background-color: #2a2a2a; /* Fondo del contenedor del perfil */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Sombra más suave */
+}
+
+/* Estilo de la foto de perfil */
+.dark-theme .perfil-foto {
+    border: 2px solid #444; /* Borde más oscuro */
+}
+
+/* Estilo de la información del perfil */
+.dark-theme .perfil-info h2 {
+    color: #ffffff; /* Texto blanco para el título */
+}
+
+.dark-theme .perfil-info p {
+    color: #b0b0b0; /* Color del texto más claro para los párrafos */
+}
+
+/* Estilo para la contraseña */
+.dark-theme .perfil-contraseña .contraseña {
+    color: #f44336; /* Color de la contraseña en modo oscuro */
+}
+
+/* Título de ahorros */
+.dark-theme .ahorros-titulo {
+    color: #1e88e5; /* Color del título en modo oscuro */
+}

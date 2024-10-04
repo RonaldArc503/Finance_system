@@ -53,3 +53,77 @@ document.getElementById('ahorroMensual').textContent = historialAhorro.length > 
 
 // Mostrar el historial de ahorros
 mostrarHistorialAhorro();
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const userDataString = localStorage.getItem('user');
+    const usuariosString = localStorage.getItem('users');
+    
+    let userData;
+    
+    if (userDataString) {
+        userData = JSON.parse(userDataString);
+    } else if (usuariosString) {
+        const usuarios = JSON.parse(usuariosString);
+        userData = usuarios.length > 0 ? usuarios[0] : null;
+    }
+
+    if (userData) {
+        document.getElementById('perfilUsername').textContent = userData.username || 'Nombre de Usuario No Disponible';
+        document.getElementById('perfilEmail').textContent = `Correo: ${userData.email || 'Correo No Disponible'}`;
+    }
+
+    // Manejar el cambio de contraseña
+    document.getElementById('cambiarPasswordForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const contraseñaActual = document.getElementById('contraseña_actual').value;
+        const nuevaPassword = document.getElementById('nueva_password').value;
+        const confirmarPassword = document.getElementById('confirmar_password').value;
+
+        // Hash de la contraseña actual ingresada
+        const hashedContraseñaActual = CryptoJS.SHA256(contraseñaActual).toString();
+
+        // Verificar que la contraseña actual coincida
+        if (hashedContraseñaActual !== userData.password) {
+            alert('La contraseña actual es incorrecta.');
+            return;
+        }
+
+        // Verificar que las nuevas contraseñas coincidan
+        if (nuevaPassword !== confirmarPassword) {
+            alert('Las nuevas contraseñas no coinciden.');
+            return;
+        }
+
+        // Hash de la nueva contraseña
+        const hashedPassword = CryptoJS.SHA256(nuevaPassword).toString();
+
+        // Actualizar la contraseña en localStorage
+        const usuarios = JSON.parse(usuariosString);
+        const usuarioIndex = usuarios.findIndex(usuario => usuario.username === userData.username);
+        
+        if (usuarioIndex !== -1) {
+            usuarios[usuarioIndex].password = hashedPassword; // Actualizar la contraseña
+            localStorage.setItem('users', JSON.stringify(usuarios)); // Guardar los cambios
+            alert('Contraseña cambiada exitosamente.');
+        }
+
+        // Limpiar el formulario
+        document.getElementById('cambiarPasswordForm').reset();
+    });
+
+       // Función para cerrar sesión
+       const cerrarSesion = document.getElementById('cerrarSesion');
+       if (cerrarSesion) {
+           cerrarSesion.addEventListener('click', function(event) {
+               event.preventDefault(); // Prevenir la acción por defecto del enlace
+               localStorage.removeItem('user'); // Eliminar datos del usuario
+               localStorage.removeItem('users'); // Opcional, si deseas eliminar todos los usuarios
+               // Redirigir a la página de inicio de sesión o inicio
+               window.location.href = '/login/login.html';
+           });
+       }
+});

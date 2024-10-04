@@ -5,42 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style-nav.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-theme.css">
+    <link rel="stylesheet" href="/css/style_agenda.css">
     <title>Agendario</title>
 </head>
 <body>
     <!-- Inicio nav-->
-  <header class="header1">
-    <div class="container">
-        <input type="checkbox" id="check" />
-        <div class="logo-container">
-            <a href="/"><h3 class="logo">TASKLY UP</h3></a>
+    <header class="header1">
+        <div class="container">
+            <input type="checkbox" id="check" />
+            <div class="logo-container">
+                <a href="/"><h3 class="logo">TASKLY UP</h3></a>
+            </div>
+            <div class="nav-btn">
+                <div class="nav-links">
+                    <ul>
+                        <li class="nav-link" style="--i: 0.5s"><a href="/">Inicio</a></li>
+                        <li class="nav-link" style="--i: 0.60s"><a href="/agenda.html">Agenda</a></li>
+                        <li class="nav-link" style="--i: 0.80s"><a href="/claves.html">Contraseñas</a></li>
+                        <li class="nav-link" style="--i: 1s"><a href="/btc.html">Criptomonedas</a></li>
+                        <li class="nav-link" style="--i: 1.1s"><a href="/task.html">Tareas</a></li>
+                        <li class="nav-link" style="--i: 1.2s">
+                            <a href="#" style="display:block;">Perfil</a>
+                            <div class="dropdown">
+                                <ul>
+                                    <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
+                                    <li class="dropdown-link"><a href="/mi_perfil.html"> Perfil e Historial</a></li>
+                                    <li class="dropdown-link"><a href="#" id="cerrarSesion">Cerrar Sistema</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="log-sign" style="--i: 1.8s"></div>
+            </div>
+            <div class="ventana-menu-container">
+                <div class="ventana-menu"><div></div></div>
+            </div>
         </div>
-        <div class="nav-btn">
-          <div class="nav-links">
-            <ul>
-                <li class="nav-link" style="--i: 0.5s"><a href="/">Inicio</a></li>
-                <li class="nav-link" style="--i: 0.60s"><a href="/agenda.html">Agenda</a></li>
-                <li class="nav-link" style="--i: 0.80s"><a href="/claves.html">Contraseñas</a></li>
-                <li class="nav-link" style="--i: 1s"><a href="/btc.html">Criptomonedas</a></li>
-                <li class="nav-link" style="--i: 1.1s"><a href="/task.html">Tareas</a></li>
-                <li class="nav-link" style="--i: 1.2s">
-                    <a href="/mi_perfil.html">Perfil</a>
-                    <div class="dropdown">
-                        <ul>
-                            <li class="dropdown-link"><a href="/login/login.html">Ingresar</a></li>
-                            <li class="dropdown-link"><a href="/mi_perfil.html">Historial</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-          </div>
-          <div class="log-sign" style="--i: 1.8s"></div>
-        </div>
-        <div class="ventana-menu-container">
-            <div class="ventana-menu"><div></div></div>
+    </header>
+    <!-- fin nav-->
+
+    <!-- Selectores de mes y año -->
+    <div class="selectors">
+        <label for="month-select">Mes:</label>
+        <select id="month-select">
+            <option value="0">Enero</option>
+            <option value="1">Febrero</option>
+            <option value="2">Marzo</option>
+            <option value="3">Abril</option>
+            <option value="4">Mayo</option>
+            <option value="5">Junio</option>
+            <option value="6">Julio</option>
+            <option value="7">Agosto</option>
+            <option value="8">Septiembre</option>
+            <option value="9">Octubre</option>
+            <option value="10">Noviembre</option>
+            <option value="11">Diciembre</option>
+        </select>
+
+        <label for="year-select">Año:</label>
+        <select id="year-select">
+            <!-- Añadir opciones de año dinámicamente con JavaScript -->
+        </select>
+    </div>
+
+    <!-- Calendario -->
+    <div class="calendar-container">
+        <h2>Calendario</h2>
+        <div class="calendar" id="calendar">
+            <!-- Aquí se generarán los días dinámicamente -->
         </div>
     </div>
-  </header>
-<!-- fin nav-->
+
+    <!-- Sección de notas -->
+    <div class="note-section">
+        <h2>Notas para el <span id="selected-date"></span></h2>
+        <textarea id="note" rows="5" cols="30" placeholder="Escribe tu nota aquí..."></textarea>
+        <input type="color" id="note-color" value="#ff0000" />
+        <button id="save-note">Guardar Nota</button>
+        <button id="clear-note">Limpiar Nota</button>
+        <h3>Notas guardadas:</h3>
+        <div id="saved-notes"></div>
+    </div>
+
+    <script src="js/agenda.js" defer></script>
+    <script src="js/theme.js" defer></script>
 </body>
 </html>
