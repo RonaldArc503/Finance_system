@@ -10,8 +10,11 @@ let ultimaFechaAhorro = localStorage.getItem('ultimaFechaAhorro');
 const haPasadoUnMinuto = (ultimaFecha) => {
     const fechaUltimoAhorro = new Date(ultimaFecha);
     const diferenciaTiempo = fechaActual - fechaUltimoAhorro;
-    const minutosPasados = Math.floor(diferenciaTiempo / (1000 * 60)); // Convertir milisegundos a minutos
-    return minutosPasados >= 1; // Cambiado a 1 minuto para prueba
+    const minutosPasados = Math.floor(diferenciaTiempo / (1000 * 60)); 
+    return minutosPasados >= 1; 
+
+    /* const diasPasados = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24)); 
+    return diasPasados >= 30; //30 dias*/ 
 };
 
 // Mostrar historial de ahorro
