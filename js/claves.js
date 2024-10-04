@@ -73,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
             deleteButton.className = 'btn btn-danger btn-sm ml-2';
             deleteButton.addEventListener('click', function() {
-                deletePassword(index);
+                if (confirm('¿Está seguro de que desea eliminar esta contraseña?')) {
+                    deletePassword(index);
+                }
             });
 
             li.appendChild(deleteButton);
