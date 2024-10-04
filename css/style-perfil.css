@@ -22,15 +22,30 @@ body {
 }
 
 .perfil-foto {
-    width: 100px; /* Ancho de la foto */
-    height: 100px; /* Alto de la foto */
+    width: 100px; /* Ancho de la foto, puedes mantenerlo fijo o cambiarlo a un porcentaje */
+    height: 100px; /* Alto de la foto, puedes mantenerlo fijo o cambiarlo a un porcentaje */
     border-radius: 50%; /* Hacer la foto redonda */
     background-image: url('https://imgs.search.brave.com/gek1pAIiBmMFka3zYjAjkXK9-rsrweM0jNsAxMi9zgE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHNkLXByZW1pdW0v/ZDEtcGVyZmlsLWNh/bmRpZGF0by1leHBy/ZXNpb24tZGlnbmEt/aWNvbm8tbmVvLXBs/YXMtZGlzZW5vcy1h/YnN0cmFjdG9zLWlj/b25pY29zLWFpc2xh/ZG9zXzEwMjA0OTUt/Nzc3ODY3LmpwZz9z/aXplPTYyNiZleHQ9/anBn'); /* Imagen de perfil por defecto */
     background-size: cover; /* Ajustar la imagen */
     background-position: center; /* Centrar la imagen */
     margin-right: 20px; /* Espacio entre la foto y la info */
     border: 2px solid #007bff; /* Bordes azul */
+    flex-shrink: 0; /* Evitar que la imagen se reduzca en tamaño */
 }
+
+/* Media query para ajustar el tamaño en pantallas más pequeñas */
+@media (max-width: 600px) {
+    .perfil-foto {
+        width: 80px; /* Cambiar a un ancho más pequeño */
+        height: 80px; /* Cambiar a un alto más pequeño */
+    }
+
+    .perfil-container {
+        flex-direction: column; /* Cambiar la dirección del flex para pantallas pequeñas */
+        align-items: center; /* Centrar el contenido */
+    }
+}
+
 
 .perfil-info {
     flex-grow: 1; /* Hace que este contenedor ocupe el espacio restante */
@@ -80,4 +95,28 @@ form button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.ahorros-titulo, .historial-titulo {
+    text-align: center; /* Centra el texto */
+    margin: 20px 0; /* Espacio superior e inferior */
+}
+
+.ahorro-mensual, .historial-ahorro {
+    display: flex; /* Usar flex para centrar el contenido */
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    align-items: center; /* Centra los elementos hijos */
+    justify-content: center; /* Asegura que el contenido esté centrado verticalmente */
+    margin: 0 auto; /* Centra el contenedor */
+    max-width: 600px; /* Opcional: un ancho máximo para mantenerlo limpio */
+}
+
+@media (max-width: 600px) {
+    .ahorros-titulo, .historial-titulo {
+        font-size: 1.5em; /* Aumenta el tamaño del texto en pantallas pequeñas */
+    }
+
+    .ahorro-mensual, .historial-ahorro {
+        padding: 10px; /* Añadir padding si es necesario */
+    }
 }

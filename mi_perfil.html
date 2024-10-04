@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="/css/style-nav.css">
     <link rel="stylesheet" href="/css/style-theme.css">
     <link rel="stylesheet" href="/css/style-perfil.css">
+    <link rel="stylesheet" href="/css/estyle_boton.css"> 
     <link rel="stylesheet" href="/css/style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script> <!-- Asegúrate de que esta línea esté aquí -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><!-- Asegúrate de que esta línea esté aquí -->
     <title>Perfil</title>
 </head>
 <body>
@@ -31,8 +33,8 @@
                             <a href="#" style="display:block;">Perfil</a>
                             <div class="dropdown">
                                 <ul>
-                                    <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
                                     <li class="dropdown-link"><a href="/mi_perfil.html"> Perfil e Historial</a></li>
+                                    <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
                                     <li class="dropdown-link"><a href="#" id="cerrarSesion">Cerrar Sistema</a></li>
                                 </ul>
                             </div>
@@ -57,7 +59,7 @@
                 <h2 id="perfilUsername">Nombre de Usuario</h2> <!-- Aquí se mostrará el nombre de usuario -->
                 <p id="perfilEmail">Correo: </p> <!-- Aquí se mostrará el correo -->
                 <div class="perfil-contraseña">
-                    <p>Contraseña: <span class="contraseña">*************</span></p> <!-- Contraseña oculta -->
+                    <p>Contraseña: <span class="contraseña">*****</span></p> <!-- Contraseña oculta -->
                 </div>
             </div>
         </div>
@@ -72,22 +74,19 @@
 
         
         <h1 class="ahorros-titulo">Mis Ahorros</h1>
-  
-
         <div id="ahorroMensual" class="ahorro-mensual"></div>
-        <div>
-          
-        </div>
-        
         <div>
             <h3 class="historial-titulo">Historial de ahorro:</h3>
             <div id="historialAhorro" class="historial-ahorro"></div>
         </div>
         
-       
+        <h3>TOTAL ACUMULADO:</h3><div id="totalAcumulado"></div>
+        <button id="generarPDF">Generar PDF</button>
     </main>
 
     <script src="/js/ahorro.js"></script> 
     <script src="/js/theme.js"></script> 
+    <script src="/js/generarpdf.js"></script> 
+</body>
 </body>
 </html>

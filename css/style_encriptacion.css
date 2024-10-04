@@ -1,103 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f5; /* Color de fondo suave */
+    margin: 0;
+    padding: 0;
+}
+
 .containerEnciptar {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-h1, h2 {
-    color: #333;
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
 }
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    text-align: center;
+    color: #007bff; /* Color azul para el título */
 }
 
 h2 {
-    font-size: 22px;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    color: #343a40; /* Color del texto */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
-label {
-    font-weight: bold;
+.form-group label {
     display: block;
     margin-bottom: 5px;
+    color: #343a40; /* Color del texto */
 }
 
-input[type="password"], button {
-    width: 100%;
+.form-group input {
+    width: calc(100% - 22px);
     padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Borde suave */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total */
 }
 
 button {
-    background-color: #007bff;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Color del botón */
     color: white;
     border: none;
+    border-radius: 5px; /* Bordes redondeados */
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px; /* Tamaño de fuente */
     margin-top: 10px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
 }
 
 #passwordMessage {
-    margin-top: 10px;
-    color: red;
+    text-align: center;
+    color: #dc3545; /* Color de advertencia */
 }
 
 #password-list {
-    list-style-type: none;
+    list-style-type: none; /* Sin puntos de lista */
     padding: 0;
 }
 
 #password-list li {
-    background-color: #e9ecef;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd; /* Línea divisoria */
 }
 
 /* Media Queries para Responsividad */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .containerEnciptar {
-        padding: 15px;
+        padding: 15px; /* Reducir padding en dispositivos más pequeños */
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 24px; /* Tamaño de fuente más pequeño para el título */
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 20px; /* Tamaño de fuente más pequeño para subtítulos */
     }
 
     button {
-        font-size: 14px;
+        font-size: 14px; /* Tamaño de fuente más pequeño para botones */
+    }
+
+    .form-group input {
+        padding: 8px; /* Reducir padding en inputs */
     }
 }
 
-.btn-danger {
-    margin-left: 10px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #dc3545;
-    font-size: 16px;
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px; /* Aún más pequeño para pantallas muy pequeñas */
+    }
+
+    h2 {
+        font-size: 18px; /* Aún más pequeño para subtítulos */
+    }
+
+    button {
+        font-size: 12px; /* Tamaño de fuente más pequeño para botones */
+    }
 }
 
-.btn-danger i {
-    font-size: 18px;
+
+#password-list {
+    list-style-type: none; /* Eliminar viñetas de la lista */
+    padding: 0; /* Eliminar padding */
+    margin: 0; /* Eliminar margen */
+}
+
+#password-list li {
+    margin: 10px 0; /* Espacio entre los elementos de la lista */
+    padding: 10px; /* Espaciado interno */
+    background-color: #f8f9fa; /* Color de fondo suave */
+    border: 1px solid #ced4da; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    word-wrap: break-word; /* Asegurarse de que el texto largo se divida */
+}
+
+#password-list li p {
+    margin: 0; /* Eliminar márgenes del párrafo */
 }

@@ -19,11 +19,16 @@ const mostrarHistorialAhorro = () => {
     const historialDiv = document.getElementById('historialAhorro');
     historialDiv.innerHTML = ''; // Limpiar el contenido anterior
 
-    historialAhorro.forEach((ahorro, index) => {
+    historialAhorro.forEach((ahorro) => {
         const ahorroDiv = document.createElement('div');
         ahorroDiv.textContent = `Ahorro del ${ahorro.fecha}: $${ahorro.cantidad}`;
         historialDiv.appendChild(ahorroDiv);
     });
+};
+
+// Sumar todos los ahorros para calcular el total acumulado
+const calcularTotalAcumulado = () => {
+    return historialAhorro.reduce((total, ahorro) => total + ahorro.cantidad, 0);
 };
 
 // Verificar si se debe guardar un nuevo ahorro
@@ -50,6 +55,10 @@ if (!ultimaFechaAhorro || haPasadoUnMinuto(ultimaFechaAhorro)) {
 document.getElementById('ahorroMensual').textContent = historialAhorro.length > 0 
     ? `Ahorro del mes: $${historialAhorro[historialAhorro.length - 1].cantidad}` 
     : 'Ahorro del mes: $0';
+
+// Mostrar el total acumulado
+const totalAcumulado = calcularTotalAcumulado();
+document.getElementById('totalAcumulado').textContent = `$${totalAcumulado}`;
 
 // Mostrar el historial de ahorros
 mostrarHistorialAhorro();
@@ -127,3 +136,5 @@ document.addEventListener('DOMContentLoaded', function() {
            });
        }
 });
+
+

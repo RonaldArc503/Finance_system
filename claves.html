@@ -6,6 +6,7 @@
   
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/style-nav.css">
+    <link rel="stylesheet" href="/css/style-theme.css">
     <link rel="stylesheet" href="/css/style_encriptacion.css">
     <link rel="icon" href="/path-to-your-favicon.ico" type="image/x-icon" />
    
@@ -35,9 +36,8 @@
                                 <a href="#" style="display:block;">Perfil</a>
                                 <div class="dropdown">
                                     <ul>
-                                        <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
                                         <li class="dropdown-link"><a href="/mi_perfil.html"> Perfil e Historial</a></li>
-                                        <li class="dropdown-link"><a href="#" id="cerrarSesion">Cerrar Sistema</a></li>
+                                        <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -51,29 +51,37 @@
             </div>
         </header>
         <!-- fin nav-->
-<div class="containerEnciptar">
-    <h1>Gestor de Contraseñas</h1>
-    <p id="passwordMessage"></p>
-    <div class="form-group">
-        <label for="newPassword">Nueva Contraseña:</label>
-        <input type="password" id="newPassword" placeholder="Introduce una nueva contraseña">
-    </div>
 
-    <button id="savePassword">Guardar Contraseña</button>
-
-    <h2>Contraseñas Guardadas:</h2>
-    <ul id="password-list"></ul>
-
-    <div class="form-group">
-        <label for="passwordInput">Contraseña de Usuario:</label>
-        <input type="password" id="passwordInput" placeholder="Introduce tu contraseña de usuario">
-    </div>
-
-    <button id="decryptPasswords">Desencriptar Contraseñas Guardadas</button>
-
-   
-</div>
+        <div class="containerEnciptar">
+            <h1>Gestor de Cuentas</h1>
+            <p id="passwordMessage"></p>
+            
+            <div class="form-group">
+                <label for="emailOrUsername">Correo o Usuario:</label>
+                <input type="text" id="emailOrUsername" placeholder="Introduce tu correo o usuario" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="newPassword">Nueva Contraseña:</label>
+                <input type="password" id="newPassword" placeholder="Introduce una nueva contraseña" required>
+            </div>
+        
+            <button id="savePassword">Guardar Contraseña</button>
+        
+            <h2>Contraseñas Guardadas:</h2>
+            <ul id="password-list"></ul>
+        
+            <div class="form-group">
+                <label for="passwordInput">Contraseña de Usuario:</label>
+                <input type="password" id="passwordInput" placeholder="Introduce tu contraseña de usuario" required>
+            </div>
+        
+            <button id="decryptPasswords">Desencriptar Contraseñas Guardadas</button>
+        </div>
+        
+        
 
 <script src="/js/claves.js"></script>
+<script src="/js/theme.js"></script>
 </body>
 </html>
