@@ -9,7 +9,6 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     padding: 20px;
     margin: 20px 0;
-    margin-top: 20px;
 }
 
 .calendar {
@@ -56,6 +55,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .selectors label {
@@ -76,7 +76,6 @@ body {
 
 .selectors select:focus {
     border-color: #1e88e5; /* Color del borde cuando está enfocado */
-    outline: none;
 }
 
 /* Sección de notas */
@@ -107,7 +106,6 @@ textarea {
 
 textarea:focus {
     border-color: #64b5f6; /* Color del borde al estar enfocado */
-    outline: none;
 }
 
 /* Botones */
@@ -166,7 +164,6 @@ button:disabled {
     vertical-align: middle; /* Align with the text */
 }
 
-
 /* style_agenda.css or a separate CSS file */
 .day {
     position: relative; /* Needed for absolute positioning of the note */
@@ -184,3 +181,72 @@ button:disabled {
     box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Add shadow for better visibility */
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .calendar {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets and small screens */
+    }
+
+    .selectors {
+        flex-direction: column; /* Stack selectors vertically */
+        align-items: flex-start; /* Align left */
+    }
+
+    .selectors label {
+        margin-bottom: 5px; /* Add some space between label and select */
+    }
+
+    .selectors select {
+        width: 100%; /* Make selectors full width */
+    }
+
+    .calendar div {
+        font-size: 0.9rem; /* Slightly smaller font size for mobile */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .note-section h2 {
+        font-size: 1.25rem; /* Smaller title font for mobile */
+    }
+
+    textarea {
+        font-size: 0.9rem; /* Smaller font size for text areas */
+    }
+
+    button {
+        font-size: 0.9rem; /* Smaller button font size */
+        padding: 8px 15px; /* Adjust button padding */
+    }
+
+    #saved-notes div {
+        font-size: 0.9rem; /* Smaller font size for saved notes */
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
+    }
+
+    .calendar div {
+        font-size: 0.8rem; /* Even smaller font size for very small screens */
+        padding: 8px; /* Further adjust padding */
+    }
+
+    .note-section h2 {
+        font-size: 1.1rem; /* Smaller title font for very small screens */
+    }
+
+    textarea {
+        font-size: 0.8rem; /* Smaller font size for text areas */
+    }
+
+    button {
+        font-size: 0.8rem; /* Smaller button font size */
+        padding: 7px 12px; /* Further adjust button padding */
+    }
+
+    #saved-notes div {
+        font-size: 0.8rem; /* Smaller font size for saved notes */
+    }
+}
