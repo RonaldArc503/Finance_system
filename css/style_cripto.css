@@ -16,7 +16,7 @@ h1 {
 }
 
 #crypto-prices {
-    width: 80%; /* Ancho del contenedor */
+    width: 95%; /* Ancho del contenedor */
     max-width: 1200px; /* Ancho máximo */
     margin-top: 20px;
     padding: 20px;

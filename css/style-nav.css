@@ -1,4 +1,4 @@
-*{
+* {
     text-decoration: none !important;
 }
 
@@ -7,7 +7,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 
 ul {
     list-style: none;
@@ -40,7 +39,7 @@ a {
 }
 
 .nav-btn {
-    flex:3;
+    flex: 3;
     display: flex;
     justify-content: flex-end;
     color: #ffffff;
@@ -88,12 +87,10 @@ a {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
 }
 
 .nav-link {
     position: relative;
-   
 }
 
 .nav-link > a {
@@ -130,7 +127,6 @@ a {
 
 .dropdown ul {
     position: relative;
-
 }
 
 .dropdown-link > a {
@@ -145,6 +141,22 @@ a {
 }
 
 .dropdown-link:hover > a {
+    background-color: #19191a;
+    color: #fff;
+}
+
+.dropdown-link > .divbtn a {
+    display: flex;
+    background-color: #fff;
+    color: #151616;
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    align-items: center;
+    justify-content: space-between;
+    transition: .3s;
+}
+
+.dropdown-link:hover > .divbtn a {
     background-color: #19191a;
     color: #fff;
 }
@@ -348,7 +360,7 @@ a {
         pointer-events: auto;
         width: 100%;
         padding: 0;
-        background-color: #3183ac;
+        background-color: #1b2327;
         display: none;
     }
 
@@ -425,7 +437,7 @@ a {
     }
 }
 
-
+/* Estilos del submenú */
 .sub-menu {
     display: none; /* Oculta el submenú por defecto */
     position: absolute; /* Posiciona el submenú de manera absoluta */

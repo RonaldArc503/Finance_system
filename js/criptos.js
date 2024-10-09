@@ -4,36 +4,42 @@ const cryptoChartElement = document.getElementById("crypto-chart");
 let chart = null; // Variable para almacenar el gráfico
 
 async function fetchCryptoPrices() {
-    const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbols=[\"BTCUSDT\",\"ETHUSDT\",\"XRPUSDT\",\"LTCUSDT\",\"ADAUSDT\"]");
+    const response = await fetch("https://api.binance.com/api/v3/ticker/24hr?symbols=[\"BTCUSDT\",\"ETHUSDT\",\"XRPUSDT\",\"LTCUSDT\",\"ADAUSDT\"]");
+    const data = await response.json();
+    return data;
+}
+
+async function fetchHistoricalData(symbol) {
+    const response = await fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=1h&limit=24`);
     const data = await response.json();
     return data;
 }
 
 function displayCryptoPrices(cryptos) {
     cryptoListElement.innerHTML = ""; // Limpiar la lista actual
-    const prices = []; // Array para almacenar los precios
-    const labels = []; // Array para almacenar los nombres de las criptomonedas
 
     cryptos.forEach(crypto => {
         const cryptoItem = document.createElement("div");
         cryptoItem.className = "crypto-item"; // Asignar clase para el estilo
 
+        // Calcular el porcentaje de cambio
+        const priceChangePercent = parseFloat(crypto.priceChangePercent).toFixed(2);
+        const price = parseFloat(crypto.lastPrice).toFixed(2);
+        
+        // Determinar el color y el símbolo (+/-) según el cambio de precio
+        const priceColor = priceChangePercent >= 0 ? 'green' : 'red';
+        const sign = priceChangePercent >= 0 ? '+' : '';
+
         // Crear contenido HTML para cada criptomoneda
         cryptoItem.innerHTML = `
-            <h3>${crypto.symbol.replace("USDT", "")}</h3>
-            <span>$${parseFloat(crypto.price).toFixed(2)} USD</span>
+            <h3 style="cursor: pointer;" onclick="showCryptoChart('${crypto.symbol}')">${crypto.symbol.replace("USDT", "")}</h3>
+            <span>$${price} USD</span>
+            <span style="color: ${priceColor};">(${sign}${priceChangePercent}%)</span>
         `;
         
         // Añadir el div a la lista
         cryptoListElement.appendChild(cryptoItem);
-
-        // Almacenar datos para el gráfico
-        labels.push(crypto.symbol.replace("USDT", ""));
-        prices.push(parseFloat(crypto.price));
     });
-
-    // Actualizar el gráfico
-    updateChart(labels, prices);
 }
 
 function updateChart(labels, prices) {
@@ -42,7 +48,7 @@ function updateChart(labels, prices) {
     }
     
     chart = new Chart(cryptoChartElement, {
-        type: 'bar', // Puedes cambiar a 'line' o cualquier otro tipo de gráfico
+        type: 'line', // Cambiar a gráfico de líneas
         data: {
             labels: labels,
             datasets: [{
@@ -50,13 +56,15 @@ function updateChart(labels, prices) {
                 data: prices,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4 // Suaviza la línea
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: false,
                     title: {
                         display: true,
                         text: 'Precio (USD)'
@@ -65,7 +73,7 @@ function updateChart(labels, prices) {
                 x: {
                     title: {
                         display: true,
-                        text: 'Criptomonedas'
+                        text: 'Hora'
                     }
                 }
             },
@@ -73,6 +81,14 @@ function updateChart(labels, prices) {
             maintainAspectRatio: false // Para que se ajuste al contenedor
         }
     });
+}
+
+async function showCryptoChart(symbol) {
+    const historicalData = await fetchHistoricalData(symbol);
+    const labels = historicalData.map(data => new Date(data[0]).toLocaleTimeString());
+    const prices = historicalData.map(data => parseFloat(data[4])); // Precio de cierre
+
+    updateChart(labels, prices);
 }
 
 async function updateCryptoData() {
@@ -86,5 +102,5 @@ async function updateCryptoData() {
 }
 
 // Actualiza los precios cada 2 segundos
-setInterval(updateCryptoData, 2000); // Cambia a 20 segundos para pruebas más cortas
+setInterval(updateCryptoData, 2000);
 updateCryptoData(); // Llama a la función inmediatamente al cargar la página

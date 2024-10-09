@@ -15,7 +15,7 @@ const currentDay = currentDate.getDate();
 const currentMonth = currentDate.getMonth();
 const currentYear = currentDate.getFullYear();
 
-let selectedMonth = currentMonth;
+let selectedMonth = currentMonth; // Inicialmente el mes seleccionado es el actual
 let selectedYear = currentYear;
 let selectedDate = `${currentDay}-${selectedMonth + 1}-${selectedYear}`;
 
@@ -33,11 +33,23 @@ function populateYearSelect() {
     yearSelect.value = currentYear; // Seleccionar el año actual por defecto
 }
 
+// Deshabilitar meses pasados
+function disablePastMonths() {
+    const monthOptions = monthSelect.querySelectorAll('option');
+    monthOptions.forEach((option, index) => {
+        if (selectedYear === currentYear && index < currentMonth) {
+            option.disabled = true; // Desactivar meses anteriores en el año actual
+        } else {
+            option.disabled = false; // Activar meses si estamos en un año futuro
+        }
+    });
+}
+
 // Seleccionar una fecha
 function selectDate(day) {
     selectedDate = `${day}-${selectedMonth + 1}-${selectedYear}`;
-    selectedDateEl.textContent = selectedDate;
-    loadNoteForDate(selectedDate);
+    loadNoteForDate(selectedDate); // Cargar la nota para la fecha seleccionada
+    selectedDateEl.textContent = `Fecha: ${selectedDate}`; // Mostrar la fecha seleccionada
 }
 
 // Guardar la nota con color desde el selector de color
@@ -46,13 +58,18 @@ saveNoteBtn.addEventListener('click', () => {
     const noteColor = noteColorInput.value; // Obtener el color seleccionado
     const noteDescription = noteEl.value;
 
-    notes[selectedDate] = { color: noteColor, description: noteDescription };
-    localStorage.setItem('notes', JSON.stringify(notes));
-    alert('Nota guardada.');
+    // Solo guardar si hay una descripción de nota
+    if (noteDescription) {
+        notes[selectedDate] = { color: noteColor, description: noteDescription };
+        localStorage.setItem('notes', JSON.stringify(notes));
+        noteEl.value = ''; // Limpiar el campo de texto de la nota
 
-    // Actualizar el calendario y mostrar notas guardadas
-    generateCalendar(selectedMonth, selectedYear);
-    displaySavedNotes();
+        // Actualizar el calendario y mostrar notas guardadas
+        generateCalendar(selectedMonth, selectedYear);
+        displaySavedNotes();
+    } else {
+        alert('Por favor, ingrese una nota antes de guardar.');
+    }
 });
 
 // Cargar notas de la fecha seleccionada
@@ -63,6 +80,7 @@ function loadNoteForDate(date) {
         noteColorInput.value = notes[date].color; // Set color picker to the saved note color
     } else {
         noteEl.value = '';
+        noteColorInput.value = '#ff0000'; // Reset to default color
     }
     displaySavedNotes();
 }
@@ -84,7 +102,7 @@ function generateCalendar(month, year) {
         const isPast = year < currentYear || (year === currentYear && month < currentMonth) || (year === currentYear && month === currentMonth && day < currentDay);
 
         if (isPast) {
-            dayEl.style.color = '#ccc'; // Mostrar fechas pasadas en gris
+            dayEl.style.color = '#707070'; // Mostrar fechas pasadas en gris
         } else {
             dayEl.addEventListener('click', () => selectDate(day));
         }
@@ -94,7 +112,7 @@ function generateCalendar(month, year) {
             const noteDiv = document.createElement('div');
             noteDiv.classList.add('note');
             noteDiv.style.backgroundColor = notes[dateKey].color; // Establecer el color de fondo según la nota
-            noteDiv.textContent = notes[dateKey].description; // Mostrar la descripción de la nota
+            noteDiv.textContent = `${notes[dateKey].description} (${day})`; // Mostrar la descripción de la nota con el día
             dayEl.appendChild(noteDiv); // Adjuntar la nota al elemento del día
         }
 
@@ -108,7 +126,7 @@ clearNoteBtn.addEventListener('click', () => {
     delete notes[selectedDate];
     localStorage.setItem('notes', JSON.stringify(notes));
     noteEl.value = '';
-    alert('Nota eliminada.');
+   // alert('Nota eliminada.');
 
     // Actualizar el calendario y mostrar notas guardadas
     generateCalendar(selectedMonth, selectedYear);
@@ -134,10 +152,16 @@ monthSelect.addEventListener('change', (e) => {
 
 yearSelect.addEventListener('change', (e) => {
     selectedYear = parseInt(e.target.value);
+    disablePastMonths(); // Deshabilitar meses pasados al cambiar el año
     generateCalendar(selectedMonth, selectedYear);
 });
 
 // Inicializar la página
 populateYearSelect(); // Llenar el selector de años
+disablePastMonths(); // Deshabilitar meses pasados al cargar la página
+
+// Establecer el mes actual como el mes seleccionado
+monthSelect.value = currentMonth; // Mostrar el mes actual en el selector
+
 generateCalendar(selectedMonth, selectedYear); // Generar el calendario con el mes y año actuales
 displaySavedNotes(); // Mostrar las notas guardadas

@@ -17,38 +17,57 @@
     <!-- Inicio nav-->
     <header class="header1">
         <div class="container">
-            <input type="checkbox" id="check" />
-            <div class="logo-container">
-                <a href="/"><h3 class="logo">TASKLY UP</h3></a>
-            </div>
-            <div class="nav-btn">
-                <div class="nav-links">
+          <input type="checkbox" id="check" />
+          <div class="logo-container">
+            <a href="/"><h3 class="logo">TASKLY UP</h3></a>
+          </div>
+          <div class="nav-btn">
+            <div class="nav-links">
+              <ul>
+                <li class="nav-link" style="--i: 0.5s"><a href="/">Inicio</a></li>
+                <li class="nav-link" style="--i: 0.6s">
+                  <a href="/agenda.html">Agenda</a>
+                </li>
+                <li class="nav-link" style="--i: 0.8s">
+                  <a href="/claves.html">Contraseñas</a>
+                </li>
+                <li class="nav-link" style="--i: 1s">
+                  <a href="/btc.html">Criptomonedas</a>
+                </li>
+                <li class="nav-link" style="--i: 1.1s">
+                  <a href="/task.html">Tareas</a>
+                </li>
+                <li class="nav-link" style="--i: 1.2s">
+                  <a href="#" style="display: block">Mi</a>
+                  <div class="dropdown">
                     <ul>
-                        <li class="nav-link" style="--i: 0.5s"><a href="/">Inicio</a></li>
-                        <li class="nav-link" style="--i: 0.60s"><a href="/agenda.html">Agenda</a></li>
-                        <li class="nav-link" style="--i: 0.80s"><a href="/claves.html">Contraseñas</a></li>
-                        <li class="nav-link" style="--i: 1s"><a href="/btc.html">Criptomonedas</a></li>
-                        <li class="nav-link" style="--i: 1.1s"><a href="/task.html">Tareas</a></li>
-                        <li class="nav-link" style="--i: 1.2s">
-                            <a href="#" style="display:block;">Perfil</a>
-                            <div class="dropdown">
-                                <ul>
-                                    <li class="dropdown-link"><a href="/mi_perfil.html"> Perfil e Historial</a></li>
-                                    <li class="dropdown-link"><a href="/login/login.html">Iniciar Sesión</a></li>
-                                    <li class="dropdown-link"><a href="#" id="cerrarSesion">Cerrar Sistema</a></li>
-                                </ul>
-                            </div>
+                      <li class="dropdown-link">
+                        <a href="/mi_perfil.html">Perfil</a>
+                      </li>
+                      <li class="dropdown-link" id="loginSection">
+                          <a id="loginButton" >Iniciar Sesión</a>
                         </li>
+                      <li class="dropdown-link">
+                        <div id="logoutSection" style="display: none" class="divbtn">
+                          <a id="logoutButton"
+                            >Cerrar Sesión</a
+                          >
+                        </div>
+                      </li>
+                     
                     </ul>
-                </div>
-                <div class="log-sign" style="--i: 1.8s"></div>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div class="ventana-menu-container">
-                <div class="ventana-menu"><div></div></div>
-            </div>
+            <div class="log-sign" style="--i: 1.8s"></div>
+          </div>
+          <div class="ventana-menu-container">
+            <div class="ventana-menu"><div></div></div>
+          </div>
         </div>
-    </header>
-    <!-- fin nav-->
+      </header>
+      <!-- fin nav-->
     
     <main class="perfil-main">
         <h1 class="ahorros-titulo">Mi Perfil</h1>
@@ -56,10 +75,10 @@
         <div class="perfil-container">
             <div class="perfil-foto" id="perfilFoto"></div> <!-- Espacio para la foto de perfil -->
             <div class="perfil-info">
-                <h2 id="perfilUsername">Nombre de Usuario</h2> <!-- Aquí se mostrará el nombre de usuario -->
+                <h2 id="perfilUsername">Usuario</h2> <!-- Aquí se mostrará el nombre de usuario -->
                 <p id="perfilEmail">Correo: </p> <!-- Aquí se mostrará el correo -->
                 <div class="perfil-contraseña">
-                    <p>Contraseña: <span class="contraseña">*****</span></p> <!-- Contraseña oculta -->
+                    <p>Contraseña: <span class="contraseña">*******</span></p> <!-- Contraseña oculta -->
                 </div>
             </div>
         </div>
@@ -87,6 +106,7 @@
     <script src="/js/ahorro.js"></script> 
     <script src="/js/theme.js"></script> 
     <script src="/js/generarpdf.js"></script> 
+    <script src="/js/activesesion.js"></script>
 </body>
 </body>
 </html>

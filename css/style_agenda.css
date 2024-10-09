@@ -4,11 +4,11 @@ body {
 }
 
 .calendar-container {
-    background-color: #bbdefb; /* Color de fondo más vibrante */
+    background-color: #7ab0c0; /* Color de fondo más vibrante */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px ;
 }
 
 .calendar {
@@ -24,12 +24,13 @@ body {
     text-align: center;
     background-color: #ffffff; /* Color de fondo del día */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Agregado efecto de transformación */
+    
     cursor: pointer;
     font-size: 1rem;
 }
 
 .calendar div:hover {
-    background-color: #64b5f6; /* Color de fondo al pasar el mouse */
+    background-color: #2f90df; /* Color de fondo al pasar el mouse */
     color: white;
     transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
 }
@@ -70,7 +71,7 @@ body {
     border-radius: 5px;
     background-color: #ffffff; /* Color de fondo blanco */
     font-size: 1rem;
-    color: #333;
+    color: #000000;
     transition: border-color 0.3s; /* Transición suave al cambiar el enfoque */
 }
 
@@ -202,7 +203,7 @@ button:disabled {
 
     .calendar div {
         font-size: 0.9rem; /* Slightly smaller font size for mobile */
-        padding: 10px; /* Adjust padding */
+        padding: 20px; /* Adjust padding */
     }
 
     .note-section h2 {
@@ -230,7 +231,7 @@ button:disabled {
 
     .calendar div {
         font-size: 0.8rem; /* Even smaller font size for very small screens */
-        padding: 8px; /* Further adjust padding */
+        padding: 20px; /* Further adjust padding */
     }
 
     .note-section h2 {

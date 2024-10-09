@@ -68,8 +68,17 @@ mostrarHistorialAhorro();
 
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Comprobar si hay un usuario logueado
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const sesionActive = localStorage.getItem('sesionActive');
+
+    // Si no hay sesión activa, redirigir a la página de inicio de sesión
+    if (!loggedInUser || !sesionActive) {
+      //  window.location.href = '/login/login.html'; // Cambia esto a la ruta correcta de tu página de inicio de sesión
+        return; // Salir del script
+    }
+
     const userDataString = localStorage.getItem('user');
     const usuariosString = localStorage.getItem('users');
     
@@ -82,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         userData = usuarios.length > 0 ? usuarios[0] : null;
     }
 
+    // Mostrar datos del usuario
     if (userData) {
         document.getElementById('perfilUsername').textContent = userData.username || 'Nombre de Usuario No Disponible';
         document.getElementById('perfilEmail').textContent = `Correo: ${userData.email || 'Correo No Disponible'}`;
@@ -126,18 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Limpiar el formulario
         document.getElementById('cambiarPasswordForm').reset();
     });
-
-       // Función para cerrar sesión
-       const cerrarSesion = document.getElementById('cerrarSesion');
-       if (cerrarSesion) {
-           cerrarSesion.addEventListener('click', function(event) {
-               event.preventDefault(); // Prevenir la acción por defecto del enlace
-               localStorage.removeItem('user'); // Eliminar datos del usuario
-               localStorage.removeItem('users'); // Opcional, si deseas eliminar todos los usuarios
-               // Redirigir a la página de inicio de sesión o inicio
-               window.location.href = '/login/login.html';
-           });
-       }
 });
+
+
+
 
 

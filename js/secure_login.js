@@ -49,13 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Hash de la contraseña ingresada
         const hashedPassword = CryptoJS.SHA256(password).toString();
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+        users = JSON.parse(localStorage.getItem('users')) || [];
 
         // Verificar si el usuario existe
         const user = users.find(user => 
             user.username === username && user.password === hashedPassword
         );
         if (user) {
+            // Guardar información del usuario en localStorage
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+            localStorage.setItem('sesionActive', true); // Marcar sesión activa
             // Redirigir a index.html
             window.location.href = '/';
         } else {
